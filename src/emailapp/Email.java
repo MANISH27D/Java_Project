@@ -10,8 +10,9 @@ public class Email {
     private int passwordDefaultLength=16;
     private String department;
     private String companyName = "manishEnterprise";
-    private String mailboxCapacity;
+    private int mailboxCapacity=500;
     private String alternateEmail;
+    private String email;
 
     //constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
@@ -21,14 +22,14 @@ public class Email {
 
         //call a method asking for the department - return the department
         this.department = setDepartment();
-        System.out.println("Department: "+this.department);
+       //System.out.println("Department: "+this.department);
 
         //call a method generating random password
         this.password =randomPassword(passwordDefaultLength);
-        System.out.println("Your default password is: "+this.password);
+        //System.out.println("Your default password is: "+this.password);
 
         //combine elements to generate email address
-        String email = firstName.toLowerCase()+lastName.toLowerCase()+"@"+department+"."+companyName+".com";
+        email = firstName.toLowerCase()+lastName.toLowerCase()+"@"+department+"."+companyName+".com";
         System.out.println("Your auto generated email is: "+email);
     }
 
@@ -57,9 +58,45 @@ public class Email {
     }
 
     //set the mailbox capacity
+    public void setMailboxCapacity(int capacity){
+        this.mailboxCapacity = capacity;
+    }
+
 
     //set the alternate email
+    public void setAlternateEmail(String altEmail){
+        this.alternateEmail=altEmail;
+    }
+
 
     //change the password
+    public void changePassword(String password){
+        this.password = password;
+    }
+
+    public int getMailboxCapacity() {return mailboxCapacity;}
+    public String getAlternateEmail() {return alternateEmail;}
+    public String getPassword(){return password;}
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public  String showInfo(){
+        return "DISPLAY NAME: "+firstName+" "+lastName+
+                "\nDEPARTMENT IS: "+department+
+                "\nEMAIL ADDRESS IS: "+email+
+                "\nMAILBOX CAPACITY: "+mailboxCapacity+"mb"
+                +"\nDEFAULT PASSWORD IS: "+password;
+
+
+
+
+
+    }
 
 }
